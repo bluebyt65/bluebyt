@@ -1,0 +1,195 @@
+// =============================================================================
+//
+// Waybar configuration
+//
+// Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+//
+// =============================================================================
+
+{
+    // -------------------------------------------------------------------------
+    // Global configuration
+    // -------------------------------------------------------------------------
+
+    "layer": "top",
+
+    "position": "top",
+
+    // If height property would be not present, it'd be calculated dynamically
+    "height": 36,
+    //"width": 1366,
+    
+   "modules-left": [
+	"custom/bluebyt",
+	"wlr/taskbar"
+	], 
+    
+    "modules-right": [
+    
+     //  "disk",
+     
+		"custom/keyboard",
+		
+        "custom/disk_root",
+         
+    //    "network",
+        
+   //   "custom/pacman",
+        
+        "custom/pacmanAlt",
+   
+        "pulseaudio", 
+  
+        "memory",
+ 
+        "cpu",
+  
+        "temperature",
+   
+        "tray",
+        
+        "clock#date",
+ 
+        "clock#time",
+        
+        "custom/wlogout"
+    ],
+
+
+    // -------------------------------------------------------------------------
+    // Modules
+    // -------------------------------------------------------------------------
+    	    "custom/bluebyt": {
+    	"format": "  {}",
+    	"format": "  {}",
+		//"format": "  {}",
+		"tooltip": false,
+		"on-click": "nautilus --new-window"
+	},
+	"network": {
+     "interface": "enp3s0",
+     // "interface": "eth0",
+     //"format": "{ifname}",
+     "format-ethernet": "{ifname} ",
+     "format-disconnected": "", //An empty format will hide the module.
+     //"tooltip-format": "{ifname}",
+     "tooltip-format-ethernet": "{ifname} ",
+     "tooltip-format-disconnected": "Disconnected",
+     "max-length": 50
+	},	
+	"custom/disk_root": {
+		"format": " {}",
+		"interval": 30,
+		"exec": "df -h --output=avail / | tail -1 | tr -d ' '",
+		"on-click": "baobab",
+		"tooltip": true,
+		"tooltip-format": "{used} used out of {total} on {/} ({percentage_used}%)"
+	},
+//	"disk": {
+//    "interval": 30,
+//    "format":"  {free}",
+//    "path": "/"
+//	},
+	"custom/keyboard": {
+    "format": " {}",
+    "interval": 3600,
+    "exec": "$HOME/Active/test.sh",
+    "on-click": "$HOME/Active/test.sh",
+    "on-click-right": "$HOME/Active/test.sh",
+    "tooltip": false    
+     },   		
+	"custom/pacmanAlt": {
+    "format": " {}",
+    "interval": 3600,
+    "exec": "checkupdates | wc -l",
+    "tooltip": false    
+    },	
+	  "custom/wlogout": {
+        "format": "  {}",
+        "on-click": "wlogout",
+        "tooltip": false
+    },
+
+    "clock#time": {
+        "interval": 10,
+        //"format": "{:%H:%M:%S}",
+        "format": "{:%H:%M}",
+        "tooltip": false
+    },
+
+    "clock#date": {
+        "interval": 20,
+        "format": "{:%e %b %Y}", // Icon: calendar-alt
+        //"tooltip-format": "{:%e %B %Y}"
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"on-click": "gnome-calendar"          
+    },
+
+    "cpu": {
+        "interval": 5,
+        "tooltip": true,
+        "format": "CPU {usage:2}%", // Icon: microchip
+        "on-click": "gnome-system-monitor",              
+        "states": {
+          "warning": 70,
+          "critical": 90
+        }       
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "MEM {}%", // Icon: memory
+        "states": {
+            "warning": 90,
+            "critical": 95
+        }
+    },
+
+"pulseaudio": {
+		"format": "{icon} {volume:3}%",
+		"format-bluetooth": "{icon}  {volume}%",
+		"format-muted": "MUTE",
+		"format-icons": {
+			"headphones": "",
+			"default": [
+				"",
+				""
+			]
+		},
+		"scroll-step": 5
+    },
+    "temperature": {
+    //"hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+    //"hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input",
+  "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
+  "input-filename": "temp1_input",  
+      "critical-threshold": 80,
+      //"interval": 5,
+      "format": "{temperatureC}°C {icon}",
+      //"format": "{temperatureC}°C",
+      "format-icons": [
+          "", // Icon: temperature-empty
+          "", // Icon: temperature-quarter
+          "", // Icon: temperature-half
+          "", // Icon: temperature-three-quarters
+          ""  // Icon: temperature-full
+      ],
+      "tooltip": true
+    },
+    "wlr/taskbar": {
+    "format": "{icon}", 
+	"tooltip-format": "{title}",
+	"on-click": "activate",
+	"all-outputs": false,
+	//"active-first": true,
+	"icon-size": 24,
+	//"icon-theme" : "Papirus",
+	//"icon-theme" : "elementary-gnome-icons-master",
+	"icon-theme" : "Obsidian",	
+	//"on-click-middle": "close",
+	"on-click-right": "minimize"
+}
+  
+
+}
+
