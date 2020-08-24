@@ -1,0 +1,232 @@
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+/* @keyframes blink-warning {
+    70% {
+        color: white;
+    }
+
+    to {
+        color: white;
+        background-color: orange;
+    }
+}
+
+@keyframes blink-critical {
+    70% {
+      color: white;
+    }
+
+    to {
+        color: white;
+        background-color: red;
+    }
+}
+
+*/
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 2px;
+    min-height: 0;
+   /* margin: 0; */
+  /* padding: 0; */
+  /* padding: 0 1px;*/
+   padding: 1px 0px 1px 0px;
+   margin: 0px 1px;
+}
+
+/* The whole bar */
+#waybar {
+     background: #2e3440;
+   
+    color: white;
+/*    font-family: FiraCode, Noto Sans, sans-serif, AnonymicePowerline Nerd Font;*/
+/*	font-family: "FontAwesome 5 Free Solid", MesloLGS NF; */
+       font-family: "FontAwesome 5 Free Solid", mononoki Nerd Font Mono;
+/*    font-family: "FontAwesome 5 Free Solid", Noto Sans Mono; */
+    
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Each module */
+#custom-taskbar,
+#custom-bluebyt,
+#custom-wlogout,
+/* #disk,*/
+#custom-keyboard,
+#custom-disk_root,
+/* #network,*/
+/* #custom-pacman, */
+#custom-pacmanAlt,
+#clock,
+#cpu,
+#memory,
+#mode,
+#pulseaudio,
+#temperature,
+#tray {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+
+#custom-wlogout {
+      background: #F94144;
+    color: #e5e9f0;
+}
+
+#clock.date {
+    background: #577590;
+    color: #e5e9f0;
+    font-weight: bold;
+}
+
+#clock.time {
+    background: #d8dee9;
+    color: #2e3440;
+    font-weight: bold;
+}
+
+#cpu {
+    background: #577590;
+    color: #e5e9f0;
+}
+
+#cpu.warning {
+    color: orange;
+}
+
+#cpu.critical {
+    color: red;
+}
+
+#memory {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    background: #90BE6D;
+    color: #3b4252;
+}
+
+#memory.warning {
+    color: orange;
+}
+
+#memory.critical {
+    color: red;
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+#mode {
+    background: #64727D;
+    border-top: 2px solid white;
+    /* To compensate for the top border and still have vertical centering */
+    padding-bottom: 2px;
+}
+
+#custom-bluebyt {
+    background: #4c566a;
+    color: #e5e9f0;
+   /* font-size: 15px; */    
+}
+
+/* #network
+    {
+    background: #F3722C;
+    color: #e5e9f0;
+    font-weight: bold;
+}
+#network.disconnected
+    {
+   background: #F3722C;
+    color: #e5e9f0;
+    font-weight: bold;
+}
+#network.linked
+    {
+    background: #F3722C;
+    color: #e5e9f0;
+    font-weight: bold;
+}
+#network.ethernet{
+ background: #F3722C;
+    color: #e5e9f0;
+    font-weight: bold;
+} */
+#custom-keyboard{
+ background: #f9c74f;
+    color: #3b4252;
+    font-weight: bold;
+}
+#custom-disk_root{
+ background: #5CB1F6;
+    color: #3b4252;
+    font-weight: bold;
+}    
+/* #disk{
+ background: #f9c74f;
+    color: #3b4252;
+    font-weight: bold;
+}   */ 
+/* #custom-pacman {
+      background: #eceff4;
+    color: #2e3440;
+} */
+
+#custom-pacmanAlt {
+  /* background: #d7385e;*/
+      background: #d8dee9;
+    color: #2e3440;
+}
+
+#pulseaudio {
+  background: #577590;
+    color: #e5e9f0;
+}
+
+#pulseaudio.muted {
+    /* No styles */
+}
+
+#temperature {
+    background: #f8961e;
+    color: #2e3440;
+}
+
+#temperature.critical {
+    color: red;
+}
+
+#tray {
+    /* No styles */
+}
+
+#taskbar {
+    border-radius: 0px 2px 2px 0;
+    padding: 0 1px;
+    margin: 0 0px;
+    color: #ffffff;
+    background-color: #4c566a;
+}
+#taskbar button {
+    border-radius: 2px 2px 2px 2px;
+    padding: 0 0 0 1px;
+    margin: 1px 1px;
+    color: #ffffff;
+    background-color: rgba(120,118,117,0.1);
+}
+#taskbar button.active {
+    background-color: rgba(108, 122, 137, 1);
+}
